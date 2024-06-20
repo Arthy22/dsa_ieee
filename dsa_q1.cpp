@@ -2,9 +2,12 @@
 #include<map>
 using namespace std;
 int main(){
-	string host="SANTACLAUS";
-	string guest="DEDMOROZ";
-	string scramble="SANTAMOROZDEDCLAUS";
+	string host;
+	string guest;
+	string scramble;
+	cin>>guest;
+	cin>>host;
+	cin>>scramble;
 	if(scramble.length()!=host.length()+guest.length()){
 		cout<<"NO";
 	}
