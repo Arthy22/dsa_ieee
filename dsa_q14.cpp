@@ -1,30 +1,33 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
+
 int main() {
-    int n;
-    cin>>n;
-    int count_even=0;
-    int count_odd=0;
-    int total=0;
-    for(int i=0;i<n;i++){
-        int element;
-        cin>>element;
-        if(element%2==0){
-            count_even++;
-        }
-        else{
-            count_odd++;
-        }
-        total+=element;
+    int s, n;
+    cin >> s >> n;
+    vector<pair<int, int>> dragons(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> dragons[i].first >> dragons[i].second;
     }
-    if(n==1){
-        cout<<1;
-        return 0;
-    }
-    if(total%2==0){
-        cout<<count_even;
-    }
-    else{
-        cout<<count_odd;
+
+    sort(dragons.begin(), dragons.end());
+
+    bool flag = true;
+    for (const auto& dragon : dragons) {
+        if (s > dragon.first) {
+            s += dragon.second;
+        } else {
+            cout << "NO" << endl;
+            flag = false;
+            break;
         }
+    }
+
+    if (flag) {
+        cout << "YES" << endl;
+    }
+
+    return 0;
 }
+
